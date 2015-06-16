@@ -45,4 +45,11 @@ public class PermissionsFacadeImpl implements PermissionsFacade<Permissions>{
 		
 	}
 
+	@Override
+	public Permissions getByUser(Integer userId) {
+		Permissions permission = permissionDao.getByUser(userId);
+		
+		return permission;
+	}
+
 }

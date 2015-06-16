@@ -5,7 +5,6 @@ import java.util.Calendar;
 
 import org.joda.time.DateTime;
 import org.joda.time.Hours;
-import org.joda.time.Interval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -224,6 +223,7 @@ public class AccessControlController {
 						tokenFacade.insert(token);
 
 						loginVerified.setToken(token.getToken());
+						//loginVerified.setPermission(permission);
 
 						return loginVerified;
 					}
