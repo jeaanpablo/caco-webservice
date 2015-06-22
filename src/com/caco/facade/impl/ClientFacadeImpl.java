@@ -21,9 +21,11 @@ public class ClientFacadeImpl implements ClientFacade<Clients>{
 	ClientDAO clientDao;
 
 	@Override
-	public void insert(Clients client) {
-		clientDao.saveOrUpdate(client);
+	public Clients insert(Clients client) {
 		
+		Clients clients = clientDao.saveOrUpdate(client);
+		
+		return clients;
 	}
 
 	@Override

@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.caco.dao.PermissionsDAO;
 import com.caco.facade.ClientFacade;
+import com.caco.facade.PhoneFacade;
 import com.caco.facade.TokenFacade;
 import com.caco.facade.UserFacade;
 import com.caco.model.Clients;
 import com.caco.model.Permissions;
+import com.caco.model.Phones;
 import com.caco.model.Token;
 import com.caco.model.Users;
 import com.caco.model.json.LoginVerified;
@@ -31,6 +33,9 @@ public class AccessControlController {
 
 	@Autowired
 	ClientFacade clientFacade;
+	
+	@Autowired
+	PhoneFacade phoneFacade;
 
 	@Autowired
 	TokenFacade tokenFacade;
@@ -44,12 +49,12 @@ public class AccessControlController {
 			@RequestParam(value = "first_name") String firstName,
 			@RequestParam(value = "last_name") String lastName,
 			@RequestParam(value = "cpf") long cpf,
-			@RequestParam(value = "rg") String rg,
 			@RequestParam(value = "birth_date") String birthDate,
 			@RequestParam(value = "gender") String gender,
 			@RequestParam(value = "email") String email,
 			@RequestParam(value = "login") String login,
-			@RequestParam(value = "password") String password) {
+			@RequestParam(value = "password") String password,
+			@RequestParam(value="cellphone") long cellphone) {
 
 		Users userVerifyEmail = userFacade.findByEmail(email);
 		Users userVerifyLogin = userFacade.findByLogin(login);
@@ -68,7 +73,6 @@ public class AccessControlController {
 			client.setName(firstName);
 			client.setLastName(lastName);
 			client.setCpf(cpf);
-			client.setRg(rg);
 
 			Calendar birthDateCal = Calendar.getInstance();
 			birthDateCal.setTimeInMillis(Long.parseLong(birthDate));
@@ -76,7 +80,15 @@ public class AccessControlController {
 			client.setGender(gender);
 			client.setIdUser(userInserted);
 
-			clientFacade.insert(client);
+			Clients clientInserted = clientFacade.insert(client);
+			
+			Phones phone = new Phones();
+			
+			phone.setPhone(cellphone);
+			phone.setClient(clientInserted);
+			phone.setPhoneType("Cellphone");
+			
+			phoneFacade.insert(phone);
 
 			Token token = new Token();
 

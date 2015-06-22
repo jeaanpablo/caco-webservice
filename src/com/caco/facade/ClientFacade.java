@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ClientFacade<Clients> {
 
-	public void insert (Clients client);
+	public com.caco.model.Clients insert (Clients client);
 	
 	public List<Clients> getAll();
 	
