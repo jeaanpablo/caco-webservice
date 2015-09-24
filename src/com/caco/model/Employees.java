@@ -2,6 +2,7 @@ package com.caco.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.caco.generic.model.GenericModel;
 
@@ -30,7 +33,8 @@ public class Employees implements GenericModel {
 	private String Salary;
 
 	@Column(name = "t_hire_date", nullable = false)
-	private Timestamp HireDate;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar HireDate;
 
 	@Column(name = "n_doc", nullable = false)
 	private long Doc;
@@ -59,14 +63,6 @@ public class Employees implements GenericModel {
 		Salary = salary;
 	}
 
-	public Timestamp getHireDate() {
-		return HireDate;
-	}
-
-	public void setHireDate(Timestamp hireDate) {
-		HireDate = hireDate;
-	}
-
 	public long getDoc() {
 		return Doc;
 	}
@@ -86,5 +82,15 @@ public class Employees implements GenericModel {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Calendar getHireDate() {
+		return HireDate;
+	}
+
+	public void setHireDate(Calendar hireDate) {
+		HireDate = hireDate;
+	}
+	
+	
 
 }
