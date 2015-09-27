@@ -19,6 +19,7 @@ import com.caco.model.Address;
 import com.caco.model.Clients;
 import com.caco.model.Contact;
 import com.caco.model.Employees;
+import com.caco.model.SalesParameter;
 import com.caco.model.Stores;
 import com.caco.model.Users;
 
@@ -40,6 +41,9 @@ public class RegisterController {
 	
 	@Autowired 
 	StoresFacade storeFacade;
+	
+	@Autowired
+	SalesParameter salesFacade;
 	
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/registerStore")
@@ -143,7 +147,7 @@ public class RegisterController {
 	
 	
 	
-	//
+	//Cadastra os funcionários relacionados a cada loja
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/registerEmployee")
 	public @ResponseBody Boolean registerEmployee(
@@ -216,6 +220,30 @@ public class RegisterController {
 		
 		return null;
 
+	}
+	
+	//Cadastra os parametros de pontuação de cada loja
+	@RequestMapping(method = RequestMethod.POST, value = "/registerSalesParameter")
+	public @ResponseBody Boolean salesParameter(
+			@RequestParam(value = "pontuation") long pontuation,
+			@RequestParam(value = "discount") long discount,
+			@RequestParam(value = "type_pontuation") String typePontuation)
+			
+
+	{		
+		
+		SalesParameter sale = new SalesParameter();
+		
+		
+		sale.setPontuation(pontuation);
+		sale.setDiscount(discount);
+		sale.setTypePontuation(typePontuation);
+		
+		SalesParameter salesInserted = salesFacade.insert();
+		
+		
+		return null;
+		
 	}
 
 }
