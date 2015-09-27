@@ -145,4 +145,9 @@ public class Address implements GenericModel {
 		
 	}
 
+	public Address insert(Address address) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
