@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.caco.facade.AddressFacade;
 import com.caco.facade.ClientFacade;
+import com.caco.facade.EmployeeFacade;
 import com.caco.facade.UserFacade;
 import com.caco.model.Address;
 import com.caco.model.Clients;
@@ -27,7 +29,11 @@ public class RegisterController {
 	@Autowired
 	UserFacade userFacade;
 	
+	@Autowired
+	AddressFacade addressFacade;
 	
+	@Autowired
+	EmployeeFacade empFacade;
 	
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/registerEmployee")
@@ -55,23 +61,27 @@ public class RegisterController {
 
 	{		
 		
-		Clients register = new Clients();
-		Employees emp = new Employees();
-		Address address = new Address();
-		Users user = new Users();
+		Clients register = new Clients();		
 		
-		user.setLogin(login);
-		user.setEmail(email);
-		user.setPassword(password);		
 		register.setName(name);	
 		register.setLastName(last_name);
 		register.setCpf(cpf);
 		register.setbDate(b_data);
 		register.setGender(gender);
-		register.setRg(rg);
+		register.setRg(rg);		
+		
+		Clients clientInserted = clientFacade.insert(register);
+		
+		Employees emp = new Employees();
+		
 		emp.setSalary(salary);
 		emp.setHireDate(hire_date);
-		emp.setDoc(doc); 
+		emp.setDoc(doc);
+		
+		Employees empInserted = empFacade.insert(emp);
+		
+		Address address = new Address();
+		
 		address.setStreet(street);
 		address.setNumber(number);
 		address.setDistrict(district);
@@ -79,6 +89,16 @@ public class RegisterController {
 		address.setState(state);
 		address.setZipCode(zip_code);
 		address.setCountry(country);
+		
+		Address addressInserted = addressFacade.insert(address);
+		
+		Users user = new Users();
+		
+		user.setLogin(login);
+		user.setEmail(email);
+		user.setPassword(password);	
+		
+		Users userInserted = userFacade.insert(user);
 	
 		
 		
