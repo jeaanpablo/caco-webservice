@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.caco.facade.AddressFacade;
 import com.caco.facade.ClientFacade;
 import com.caco.facade.EmployeeFacade;
+import com.caco.facade.SalesParameterFacade;
 import com.caco.facade.StoresFacade;
 import com.caco.facade.UserFacade;
 import com.caco.model.Address;
@@ -43,7 +44,7 @@ public class RegisterController {
 	StoresFacade storeFacade;
 	
 	@Autowired
-	SalesParameter salesFacade;
+	SalesParameterFacade salesFacade;
 	
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/registerStore")
@@ -85,7 +86,7 @@ public class RegisterController {
 			store.setDescription(description);
 			store.setFantasyName(fantasy);	
 			
-			Stores storeInserted = storeFacade.insert(store);
+			storeFacade.insert(store);
 			
 			Address address = new Address();
 			
@@ -97,7 +98,7 @@ public class RegisterController {
 			address.setZipCode(zip_code);
 			address.setCountry(country);
 			
-			Address addressInserted = addressFacade.insert(address);
+			addressFacade.insert(address);
 			
 			
 		
@@ -137,7 +138,7 @@ public class RegisterController {
 		address.setZipCode(zip_code);
 		address.setCountry(country);
 		
-		Address addressInserted = addressFacade.insert(address);
+		addressFacade.insert(address);
 	
 		}
 		
@@ -194,7 +195,7 @@ public class RegisterController {
 		emp.setHireDate(hire_date);
 		emp.setDoc(doc);
 		
-		Employees empInserted = empFacade.insert(emp);
+		empFacade.insert(emp);
 		
 		Address address = new Address();
 		
@@ -206,7 +207,7 @@ public class RegisterController {
 		address.setZipCode(zip_code);
 		address.setCountry(country);
 		
-		Address addressInserted = addressFacade.insert(address);
+		addressFacade.insert(address);
 		
 		Users user = new Users();
 		
@@ -225,6 +226,7 @@ public class RegisterController {
 	//Cadastra os parametros de pontuação de cada loja
 	@RequestMapping(method = RequestMethod.POST, value = "/registerSalesParameter")
 	public @ResponseBody Boolean salesParameter(
+			@RequestParam(value = "id_store") long idStore,
 			@RequestParam(value = "pontuation") long pontuation,
 			@RequestParam(value = "discount") long discount,
 			@RequestParam(value = "type_pontuation") String typePontuation)
@@ -234,12 +236,15 @@ public class RegisterController {
 		
 		SalesParameter sale = new SalesParameter();
 		
+		Stores store = new Stores();
+		store.setId(idStore);
 		
+		sale.setIdStore(store);
 		sale.setPontuation(pontuation);
 		sale.setDiscount(discount);
 		sale.setTypePontuation(typePontuation);
 		
-		SalesParameter salesInserted = salesFacade.insert();
+		salesFacade.insert(sale);
 		
 		
 		return null;
