@@ -52,13 +52,13 @@ public class Clients implements GenericModel {
 
 	@Column(name = "s_rg", nullable = true)
 	private String rg;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_client", referencedColumnName = "id_client")
+	private Address client;
 
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Phones> phonesCollection;
-	
-
-	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Address> addressCollection;
 
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<LoyalityCard> clientpointsCollection;
@@ -229,32 +229,6 @@ public class Clients implements GenericModel {
 
 	/* Getters and Setters da tabelas Address */
 
-	public List<Address> getAddressCollection() {
-		return addressCollection;
-	}
-
-	public void setAddressCollection(List<Address> addressCollection) {
-		this.addressCollection = addressCollection;
-	}
-
-	public void addAddressCollection(Address address) {
-		if (this.getAddressCollection() == null) {
-
-			this.setAddressCollection(new ArrayList<Address>());
-		}
-
-		this.getAddressCollection().add(address);
-
-	}
-
-	public void removeAddressCollection(Address address) {
-		if (this.getAddressCollection() != null) {
-
-			if (this.getAddressCollection().contains(address)) {
-				this.getAddressCollection().remove(address);
-			}
-		}
-	}
 
 	/* Getters and Setters da tabela ClientPoints */
 
