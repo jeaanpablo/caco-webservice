@@ -24,10 +24,6 @@ public class Address implements GenericModel {
 	@GeneratedValue
 	@Column(name = "id_address")
 	private long idAddress;
-
-	@ManyToOne
-	@JoinColumn(name = "id_client", referencedColumnName = "id_client")
-	private Clients client;
 	
 	@OneToMany(mappedBy = "idAddress", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Address> addressCollection;
@@ -60,6 +56,9 @@ public class Address implements GenericModel {
 	public void setAddressCollection(List<Address> addressCollection) {
 		this.addressCollection = addressCollection;
 	}
+	
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Clients> clientsCollection;
 
 	public long getIdAddress() {
 		return idAddress;
@@ -69,12 +68,12 @@ public class Address implements GenericModel {
 		this.idAddress = idAddress;
 	}
 
-	public Clients getClient() {
-		return client;
+	public List<Clients> getClientsCollection() {
+		return clientsCollection;
 	}
 
-	public void setClient(Clients client) {
-		this.client = client;
+	public void setClientsCollection(List<Clients> clientsCollection) {
+		this.clientsCollection = clientsCollection;
 	}
 
 	public String getStreet() {
