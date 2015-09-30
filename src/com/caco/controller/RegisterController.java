@@ -80,8 +80,13 @@ public class RegisterController {
 		if (userVerifyEmail != null) {
 			
 			
-            Stores store = new Stores();
-			
+            Stores store = new Stores();            
+            Users user = userFacade.findByLogin(login);
+
+    		Clients client = new Clients();
+    		client.setIdUser(user);
+            
+            store.setClient(client);
 			store.setCnpj(cnpj);
 			store.setDescription(description);
 			store.setFantasyName(fantasy);	
