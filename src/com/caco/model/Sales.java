@@ -2,6 +2,7 @@ package com.caco.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.caco.generic.model.GenericModel;
 
@@ -44,7 +47,8 @@ public class Sales implements GenericModel {
 	private long tradePoints;
 
 	@Column(name = "t_expiration_date", nullable = false)
-	private Timestamp expirationDate;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar expirationDate;
 	
 	public List<ArchievedTransactions> getArchievedTransactionCollection() {
 		return archievedTransactionCollection;
@@ -95,11 +99,12 @@ public class Sales implements GenericModel {
 		this.tradePoints = tradePoints;
 	}
 
-	public Timestamp getExpirationDate() {
+
+	public Calendar getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(Timestamp expirationDate) {
+	public void setExpirationDate(Calendar expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 

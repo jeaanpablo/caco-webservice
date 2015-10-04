@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.caco.facade.AddressFacade;
 import com.caco.facade.ClientFacade;
 import com.caco.facade.EmployeeFacade;
+import com.caco.facade.PhoneFacade;
+import com.caco.facade.SalesFacade;
 import com.caco.facade.SalesParameterFacade;
 import com.caco.facade.StoresFacade;
 import com.caco.facade.UserFacade;
@@ -20,6 +22,7 @@ import com.caco.model.Address;
 import com.caco.model.Clients;
 import com.caco.model.Contact;
 import com.caco.model.Employees;
+import com.caco.model.Sales;
 import com.caco.model.SalesParameter;
 import com.caco.model.Stores;
 import com.caco.model.Users;
@@ -46,6 +49,11 @@ public class RegisterController {
 	@Autowired
 	SalesParameterFacade salesFacade;
 	
+	@Autowired
+	PhoneFacade phoneFacade;
+	
+	@Autowired 
+	SalesFacade saleFacade;
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/registerStore")
 	public @ResponseBody Boolean registerStore(
@@ -86,6 +94,8 @@ public class RegisterController {
     		Clients client = new Clients();
     		client.setIdUser(user);
             
+    		
+    		
             store.setClient(client);
 			store.setCnpj(cnpj);
 			store.setDescription(description);
@@ -95,6 +105,7 @@ public class RegisterController {
 			
 			Address address = new Address();
 			
+			client.setAddress(address);
 			address.setStreet(street);
 			address.setNumber(number);
 			address.setDistrict(district);
@@ -256,4 +267,40 @@ public class RegisterController {
 		
 	}
 
+	
+	//Cadastra as promocoes relacionadas a cada loja
+		@RequestMapping(method = RequestMethod.POST, value = "/registerSales")
+		public @ResponseBody Boolean registerSales(
+				@RequestParam(value = "id_store") long idStore,
+				@RequestParam(value = "id_client") long idClient,
+				@RequestParam(value = "description") String description,
+				@RequestParam(value = "trade_points") long tradePoints,
+				@RequestParam(value = "expiration_date") Calendar expirationDate)
+				
+
+		{		
+			
+			Stores store = new Stores();
+			store.setId(idStore);
+			
+			Clients clients = new Clients();
+			clients.setIdClient(idClient);
+			
+			Sales sales = new Sales();
+			
+			sales.setIdStore(store);
+			sales.setClient(clients);
+			sales.setDescription(description);
+			sales.setTradePoints(tradePoints);
+			sales.setExpirationDate(expirationDate);
+			
+			saleFacade.insert(sales);
+			
+			
+			return null;
+			
+		}
+
+	
+	
 }

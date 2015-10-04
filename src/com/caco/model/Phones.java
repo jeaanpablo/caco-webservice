@@ -26,6 +26,10 @@ public class Phones implements GenericModel {
 	@ManyToOne
 	@JoinColumn(name = "id_client", referencedColumnName = "id_client")
 	private Clients client;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_store", referencedColumnName = "id_store")
+	private Stores store;
 
 	@Column(name = "n_phone", nullable = false)
 	private long phone;
@@ -76,5 +80,15 @@ public class Phones implements GenericModel {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Stores getStore() {
+		return store;
+	}
+
+	public void setStore(Stores store) {
+		this.store = store;
+	}
+	
+	
 
 }

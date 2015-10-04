@@ -55,7 +55,7 @@ public class Clients implements GenericModel {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_client", referencedColumnName = "id_client")
-	private Address client;
+	private Address address;
 
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Phones> phonesCollection;
@@ -296,6 +296,14 @@ public class Clients implements GenericModel {
 	public void setHistoryIndicatedCollection(
 			List<HistoryIndication> historyIndicatedCollection) {
 		this.historyIndicatedCollection = historyIndicatedCollection;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
 
