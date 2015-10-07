@@ -15,7 +15,7 @@ import com.caco.model.Contact;
 import com.caco.model.Employees;
 
 @Transactional
-@Service("EmployeeFacade")
+@Service("employeeFacade")
 @Scope("prototype")
 public class EmployeeFacadeImpl implements EmployeeFacade<Employees>{
 	

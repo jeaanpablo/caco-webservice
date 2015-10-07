@@ -10,7 +10,7 @@ import com.caco.facade.SalesParameterFacade;
 import com.caco.model.SalesParameter;
 
 @Transactional
-@Service("permissionFacade")
+@Service("saleParameterFacade")
 @Scope("prototype")
 public class SalesParameterFacadeImpl implements SalesParameterFacade<SalesParameter>{
 

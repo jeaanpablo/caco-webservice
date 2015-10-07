@@ -10,7 +10,7 @@ import com.caco.facade.BuyingHistoryFacade;
 import com.caco.model.BuyingHistory;
 
 @Transactional
-@Service("permissionFacade")
+@Service("buyingHistoryFacade")
 @Scope("prototype")
 public class BuyingHistoryFacadeImpl implements BuyingHistoryFacade<BuyingHistory>{
 

@@ -51,6 +51,9 @@ public class Stores implements GenericModel {
 	private List<SalesParameter> salesParameterCollection;
 	
 	@OneToMany(mappedBy = "idStore", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Phones> phonesCollection;
+
+	@OneToMany(mappedBy = "idStore", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<PointsParameter> pointsParameterCollection;
 
 	public List<PointsParameter> getPointsParameterCollection() {
@@ -61,10 +64,6 @@ public class Stores implements GenericModel {
 			List<PointsParameter> pointsParameterCollection) {
 		this.pointsParameterCollection = pointsParameterCollection;
 	}
-	
-	@OneToMany(mappedBy = "id_store", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Phones> phonesCollection;
-	
 	
 
 	public Address getAddress() {

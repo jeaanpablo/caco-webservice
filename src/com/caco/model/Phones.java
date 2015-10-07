@@ -29,7 +29,7 @@ public class Phones implements GenericModel {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_store", referencedColumnName = "id_store")
-	private Stores store;
+	private Stores idStore;
 
 	@Column(name = "n_phone", nullable = false)
 	private long phone;
@@ -81,13 +81,15 @@ public class Phones implements GenericModel {
 		
 	}
 
-	public Stores getStore() {
-		return store;
+	public Stores getIdStore() {
+		return idStore;
 	}
 
-	public void setStore(Stores store) {
-		this.store = store;
+	public void setIdStore(Stores idStore) {
+		this.idStore = idStore;
 	}
+
+
 	
 	
 

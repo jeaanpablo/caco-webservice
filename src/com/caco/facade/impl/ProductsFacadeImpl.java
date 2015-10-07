@@ -2,9 +2,18 @@ package com.caco.facade.impl;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.caco.facade.PointsParameterFacade;
 import com.caco.facade.ProductFacade;
+import com.caco.model.PointsParameter;
 import com.caco.model.Products;
 
+@Transactional
+@Service("productsFacade")
+@Scope("prototype")
 public class ProductsFacadeImpl implements ProductFacade<Products>{
 
 	@Override

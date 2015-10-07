@@ -10,7 +10,7 @@ import com.caco.facade.ArchievedTransactionsFacade;
 import com.caco.model.ArchievedTransactions;
 
 @Transactional
-@Service("permissionFacade")
+@Service("archievedTFacade")
 @Scope("prototype")
 public class ArchievedTransactionsFacadeImpl implements ArchievedTransactionsFacade<ArchievedTransactions>{
 

@@ -11,7 +11,7 @@ import com.caco.model.LoyalityCard;
 
 
 @Transactional
-@Service("permissionFacade")
+@Service("loyalityFacade")
 @Scope("prototype")
 public class LoyalityCardFacadeImpl implements LoyalityCardFacade<LoyalityCard>{
 

@@ -10,7 +10,7 @@ import com.caco.facade.HistoryIndicationFacade;
 import com.caco.model.HistoryIndication;
 
 @Transactional
-@Service("permissionFacade")
+@Service("historyIndicationFacade")
 @Scope("prototype")
 public class HistoryIndicationFacadeImpl implements HistoryIndicationFacade<HistoryIndication>{
 

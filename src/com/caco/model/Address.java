@@ -49,6 +49,20 @@ public class Address implements GenericModel {
 	@Column(name = "s_country", nullable = false)
 	private String country;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_client", referencedColumnName = "id_client")
+	private Clients client;
+	
+	
+	
+	public Clients getClient() {
+		return client;
+	}
+
+	public void setClient(Clients client) {
+		this.client = client;
+	}
+
 	public List<Address> getAddressCollection() {
 		return addressCollection;
 	}
@@ -57,8 +71,6 @@ public class Address implements GenericModel {
 		this.addressCollection = addressCollection;
 	}
 	
-	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Clients> clientsCollection;
 
 	public long getIdAddress() {
 		return idAddress;
@@ -66,14 +78,6 @@ public class Address implements GenericModel {
 
 	public void setIdAddress(long idAddress) {
 		this.idAddress = idAddress;
-	}
-
-	public List<Clients> getClientsCollection() {
-		return clientsCollection;
-	}
-
-	public void setClientsCollection(List<Clients> clientsCollection) {
-		this.clientsCollection = clientsCollection;
 	}
 
 	public String getStreet() {

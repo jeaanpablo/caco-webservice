@@ -10,7 +10,7 @@ import com.caco.facade.PointsParameterFacade;
 import com.caco.model.PointsParameter;
 
 @Transactional
-@Service("permissionFacade")
+@Service("pointsFacade")
 @Scope("prototype")
 public class PointsParameterFacadeImpl implements PointsParameterFacade<PointsParameter>{
 

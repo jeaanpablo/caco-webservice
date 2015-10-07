@@ -80,6 +80,9 @@ public class Clients implements GenericModel {
 
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Stores> storesCollection;
+	
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Address> addressCollection;
 
 	@OneToMany(mappedBy = "clientIndicated", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<HistoryIndication> historyIndicatedCollection;
@@ -305,6 +308,16 @@ public class Clients implements GenericModel {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+
+	public List<Address> getAddressCollection() {
+		return addressCollection;
+	}
+
+	public void setAddressCollection(List<Address> addressCollection) {
+		this.addressCollection = addressCollection;
+	}
+	
+	
 	
 
 }
