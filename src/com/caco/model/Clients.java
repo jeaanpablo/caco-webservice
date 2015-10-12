@@ -54,7 +54,7 @@ public class Clients implements GenericModel {
 	private String rg;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_client", referencedColumnName = "id_client")
+	@JoinColumn(name = "id_address", referencedColumnName = "id_address")
 	private Address address;
 
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

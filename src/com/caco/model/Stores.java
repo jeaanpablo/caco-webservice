@@ -40,10 +40,6 @@ public class Stores implements GenericModel {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "id_client", referencedColumnName = "id_client")
-	private Address address;
-	
-	@ManyToOne
 	@JoinColumn(name = "id_address", referencedColumnName = "id_address")
 	private Address idAdress;
 
@@ -65,14 +61,6 @@ public class Stores implements GenericModel {
 		this.pointsParameterCollection = pointsParameterCollection;
 	}
 	
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 
 	public List<Phones> getPhonesCollection() {
 		return phonesCollection;
