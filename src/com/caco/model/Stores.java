@@ -32,8 +32,19 @@ public class Stores implements GenericModel {
 	@Column(name = "s_fantasy_name", nullable = false)
 	private String fantasyName;
 
+	@Column(name = "s_segment", nullable = false)
+	private String segment;
+	
+	@Column(name = "s_state registration", nullable = false)
+	private String stateRegistration;	
+	
+	@Column(name = "s_company_name", nullable = false)
+	private String companyName;
+	
 	@Column(name = "n_cnpj", nullable = false)
 	private long cnpj;
+	
+	
 
 	@Column(name = "s_description", nullable = true)
 	private String description;
@@ -207,5 +218,32 @@ public class Stores implements GenericModel {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public String getSegment() {
+		return segment;
+	}
+
+	public void setSegment(String segment) {
+		this.segment = segment;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getStateRegistration() {
+		return stateRegistration;
+	}
+
+	public void setStateRegistration(String stateRegistration) {
+		this.stateRegistration = stateRegistration;
+	}
+	
+	
+	
 
 }

@@ -31,11 +31,18 @@ public class Phones implements GenericModel {
 	@JoinColumn(name = "id_store", referencedColumnName = "id_store")
 	private Stores idStore;
 
-	@Column(name = "n_phone", nullable = false)
-	private long phone;
+	@Column(name = "n_phone_main", nullable = false)
+	private long phoneMain;
+	
+	@Column(name = "n_phone_sec", nullable = true)
+	private long phoneSec;
+	
+	@Column(name = "n_phone_land1", nullable = true)
+	private long phoneland1;
+	
+	@Column(name = "n_phone_land2", nullable = true)
+	private long phoneland2;
 
-	@Column(name = "s_phone_type", nullable = false)
-	private String phoneType;
 
 	public long getIdPhone() {
 		return idPhone;
@@ -52,23 +59,7 @@ public class Phones implements GenericModel {
 	public void setClient(Clients client) {
 		this.client = client;
 	}
-
-	public long getPhone() {
-		return phone;
-	}
-
-	public void setPhone(long phone) {
-		this.phone = phone;
-	}
-
-	public String getPhoneType() {
-		return phoneType;
-	}
-
-	public void setPhoneType(String phoneType) {
-		this.phoneType = phoneType;
-	}
-
+	
 	@Override
 	public Serializable getId() {
 		// TODO Auto-generated method stub
@@ -87,6 +78,38 @@ public class Phones implements GenericModel {
 
 	public void setIdStore(Stores idStore) {
 		this.idStore = idStore;
+	}
+
+	public long getPhoneMain() {
+		return phoneMain;
+	}
+
+	public void setPhoneMain(long phoneMain) {
+		this.phoneMain = phoneMain;
+	}
+
+	public long getPhoneSec() {
+		return phoneSec;
+	}
+
+	public void setPhoneSec(long phoneSec) {
+		this.phoneSec = phoneSec;
+	}
+
+	public long getPhoneland1() {
+		return phoneland1;
+	}
+
+	public void setPhoneland1(long phoneland1) {
+		this.phoneland1 = phoneland1;
+	}
+
+	public long getPhoneland2() {
+		return phoneland2;
+	}
+
+	public void setPhoneland2(long phoneland2) {
+		this.phoneland2 = phoneland2;
 	}
 
 

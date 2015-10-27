@@ -42,6 +42,9 @@ public class Address implements GenericModel {
 
 	@Column(name = "s_state", nullable = false)
 	private String state;
+	
+	@Column(name = "s_complement", nullable = true)
+	private String complement;
 
 	@Column(name = "n_zip_code", nullable = false)
 	private long zipCode;
@@ -53,7 +56,13 @@ public class Address implements GenericModel {
 	@JoinColumn(name = "id_client", referencedColumnName = "id_client")
 	private Clients client;
 	
-	
+	public String getComplement() {
+		return complement;
+	}
+
+	public void setComplement(String complement) {
+		this.complement = complement;
+	}
 	
 	public Clients getClient() {
 		return client;
